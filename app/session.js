@@ -1,14 +1,36 @@
 'use strict';
 
 var bcrypt = require('bcryptjs'),
+    config = require('./config.js').db,
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    session = require('express-session');
+    session = require('express-session'),
+    MySQLStore = require('express-mysql-session')(session);;
 
 
 
 var init = function(app, db)  {
-  app.use(session({secret: 'supernova', saveUninitialized: true, resave: true}));
+  
+  var options = {
+    database: config.dbname,
+    host: config.host,
+    password: config.password,
+    port: config.port,
+    user: config.username,
+    createDatabaseTable: true,
+    schema: {
+        tableName: 'sessions',
+        columnNames: {
+            session_id: 'session_id',
+            expires: 'expires',
+            data: 'data'
+        }
+    }
+  }
+    
+  app.use(session({key: 'session_cookie', secret: 'supernova', saveUninitialized: true, resave: true, 
+                   store: new MySQLStore(options)
+                  }));
   app.use(passport.initialize());
   app.use(passport.session());
 

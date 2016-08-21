@@ -28,5 +28,6 @@ sequelize.sync()
   });
 
 module.exports = {
+  instance: sequelize,
   user: User
 }
