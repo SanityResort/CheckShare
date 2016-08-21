@@ -1,0 +1,13 @@
+{
+  "dbname": "testdb",
+  "dialect": "mariadb",
+  "host": "localhost",
+  "password": "root",
+  "pool": {
+    "idle": 10000,
+    "max": 50,
+    "min": 0
+  },
+  "port": 3306,
+  "username": "root"
+}

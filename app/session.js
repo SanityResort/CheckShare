@@ -6,7 +6,8 @@ var bcrypt = require('bcryptjs'),
     session = require('express-session');
 
 
-var init(app, db) =  {
+
+var init = function(app, db)  {
   app.use(session({secret: 'supernova', saveUninitialized: true, resave: true}));
   app.use(passport.initialize());
   app.use(passport.session());
@@ -46,5 +47,5 @@ var init(app, db) =  {
 }
 
 module.exports = {
-  init: init;
+  init: init
 }

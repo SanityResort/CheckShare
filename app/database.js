@@ -1,15 +1,16 @@
 'use strict';
 
-var Sequelize = require('sequelize');
+var   config = require('./config.js').db,
+      Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('testdb', 'root', 'root', {
-  host: 'localhost',
-  dialect: 'mariadb',
-
+var sequelize = new Sequelize(config.dbname, config.username, config.password, {
+  dialect: config.dialect,
+  host: config.host,
+  password: config.password,
   pool: {
-    max: 50,
-    min: 0,
-    idle: 10000
+    max: config.pool.max,
+    min: config.pool.min,
+    idle: config.pool.idle
   }
 });
 

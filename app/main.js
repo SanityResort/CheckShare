@@ -3,14 +3,16 @@ var express = require('express'),
     app = express(), 
     bcrypt = require('bcryptjs'),
     bodyParser = require('body-parser'),
-    session = require('./session.js'),
-    db = require('./database.js');
+    config = require('./config.js').main,
+    db = require('./database.js'),
+    passport = require('passport'),
+    session = require('./session.js');
 
 session.init(app, db);
 
-app.listen(80);
+app.listen(config.port);
 
-app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.json());
 
 app.post('/login', passport.authenticate('local'),  function (req, res) {
   res.json(req.user);
@@ -19,8 +21,7 @@ app.post('/login', passport.authenticate('local'),  function (req, res) {
 app.post('/register', function (req, res) {
   var username = req.body.username;
   var password = req.body.password;
-  var saltsize = 8;
-  var pwhash = bcrypt.hashSync(password, saltsize);
+  var pwhash = bcrypt.hashSync(password, config.saltsize);
   
   db.user.create({
     username: username,
