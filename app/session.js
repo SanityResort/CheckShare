@@ -28,7 +28,7 @@ var init = function(app, db)  {
     }
   }
     
-  app.use(session({key: 'session_cookie', secret: 'supernova', saveUninitialized: true, resave: true, 
+  app.use(session({key: config.session.key, secret: config.session.secret, saveUninitialized: true, resave: true, 
                    store: new MySQLStore(options)
                   }));
   app.use(passport.initialize());

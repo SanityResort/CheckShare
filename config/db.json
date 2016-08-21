@@ -10,7 +10,7 @@
   },
   "port": 3306,
   "session": {
-    "key": "cookie_name",
+    "key": "session_cookie",
     "secret": "ventilator-heizung-auto-zug-fernseher"
   },
   "username": "root"
