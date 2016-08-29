@@ -28,10 +28,8 @@ var init = function(app, db)  {
         }
     }
   }
-    
-  app.use(session({key: sessionConfig.key, secret: sessionConfig.secret, saveUninitialized: true, resave: true, 
-                   store: new MySQLStore(options)
-                  }));
+
+  app.use(session({key: sessionConfig.key, secret: sessionConfig.secret, saveUninitialized: true, resave: true, store: new MySQLStore(options)}));
   app.use(passport.initialize());
   app.use(passport.session());
 

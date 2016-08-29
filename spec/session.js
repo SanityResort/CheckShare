@@ -1,28 +1,28 @@
 'use strict'
 
-mock('./config', {db: {
-  "dbname": "dbName",
-  "dialect": "mariadb",
-  "host": "host",
-  "password": "password",
-  "pool": {
-    "idle": 10000,
-    "max": 50,
-    "min": 0
-  },
-  "port": 1234,
-  "session": {
-    "key": "session_cookie",
-    "secret": "secret"
-  },
-  "username": "user"
-}});
+var expect = require('expect.js'),
+    session = require('../app/session'),
+    sinon = require('sinon');
 
+var appMock;
 
-var session = require('../app/session');
+beforeEach(function(){
+  appMock = {use: sinon.spy()};
+});
 
-
-
-var appMock = {use: function(){}}
-
-session.init(appMock);
+describe('Session', function() {
+  
+  describe('#init', function() {
+    
+    beforeEach(function(){
+      session.init(appMock);
+    });
+    
+    it('should call "use" 3 times', function() {    
+      expect(appMock.use.callCount).to.be(3);     
+    });
+    
+  });
+  
+  
+});

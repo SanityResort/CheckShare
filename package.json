@@ -4,12 +4,12 @@
   "description": "",
   "main": "app/main.js",
   "scripts": {
-    "test": "mocha spec  -e process.env.NODE_ENV = 'test'  --require spec/helper/helpers.js"
+    "test": "mocha spec --require spec/helper/helpers.js"
   },
   "dependencies": {
     "bcryptjs": "2.3.0",
     "body-parser": "1.15.2",
-    "expect": "1.20.2",
+    "expect.js": "0.3.1",
     "express": "4.14.0",
     "express-mysql-session": "1.1.1",
     "express-session": "1.14.0",

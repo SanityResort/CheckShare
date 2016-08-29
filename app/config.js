@@ -3,7 +3,7 @@
 var delim = process.platform == "win32" ? "\\" : "/"
 
 var config = require('nodejs-config')(
-     process.argv[1].replace("app" + delim + "main.js", ""), function() { 
+     __dirname+delim+'..', function() {
        return process.env.NODE_ENV || 'dev';
      }
     );
