@@ -1,7 +1,8 @@
 'use strict';
 
 var bcrypt = require('bcryptjs'),
-    config = require('./config.js').db,
+    dbConfig = require('./config.js').db,
+    sessionConfig = require('./config.js').session,
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     session = require('express-session'),
@@ -12,11 +13,11 @@ var bcrypt = require('bcryptjs'),
 var init = function(app, db)  {
   
   var options = {
-    database: config.dbname,
-    host: config.host,
-    password: config.password,
-    port: config.port,
-    user: config.username,
+    database: dbConfig.dbname,
+    host: dbConfig.host,
+    password: dbConfig.password,
+    port: dbConfig.port,
+    user: dbConfig.username,
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',
@@ -28,7 +29,7 @@ var init = function(app, db)  {
     }
   }
     
-  app.use(session({key: config.session.key, secret: config.session.secret, saveUninitialized: true, resave: true, 
+  app.use(session({key: sessionConfig.key, secret: sessionConfig.secret, saveUninitialized: true, resave: true, 
                    store: new MySQLStore(options)
                   }));
   app.use(passport.initialize());

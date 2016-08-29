@@ -1,5 +1,5 @@
 {
-  "dbname": "testdb",
+  "dbname": "checkshare",
   "dialect": "mariadb",
   "host": "localhost",
   "password": "root",
@@ -9,9 +9,5 @@
     "min": 0
   },
   "port": 3306,
-  "session": {
-    "key": "session_cookie",
-    "secret": "ventilator-heizung-auto-zug-fernseher"
-  },
   "username": "root"
 }

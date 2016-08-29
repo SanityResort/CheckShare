@@ -1,0 +1,7 @@
+{
+  "dbname": "testdb",
+  "host": "testhost",
+  "password": "testpw",
+  "port": 1234,
+  "username": "testuser"
+}
