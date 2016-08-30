@@ -6,7 +6,7 @@ var bcrypt = require('bcryptjs'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     session = require('express-session'),
-    MySQLStore = require('express-mysql-session')(session);;
+    MySQLStore = require('express-mysql-session')(session);
 
 
 
