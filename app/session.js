@@ -38,16 +38,15 @@ var init = function(app, db)  {
         db.user.findOne({attributes: ['id', 'password'], where: {username: username}})
           .then(function(user){
           if (!user) {
-            return callback(null, false, {message: 'Incorrect User'});
+            return callback(null, false, {message: 'Incorrect User or Password'});
           }
           if (bcrypt.compareSync(password, user.password)) {
             return callback(null, {id: user.id});
           } else {
-            return callback(null, false, {message: 'Incorrect Password'});
+            return callback(null, false, {message: 'Incorrect User or Password'});
           }
 
         }, function(error){
-          console.log('Error finding user "' + username + '": ' + error);
           return callback(error);
         });
       }
