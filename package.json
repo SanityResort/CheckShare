@@ -4,6 +4,7 @@
   "description": "",
   "main": "app/main.js",
   "scripts": {
+    "start": "node app/main.js",
     "test": "mocha spec --require spec/helper/helpers.js"
   },
   "dependencies": {
