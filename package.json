@@ -21,6 +21,7 @@
     "nodejs-config": "1.0.1",
     "passport": "0.3.2",
     "passport-local": "1.0.0",
+    "sendgrid-nodejs": "0.1.0-2",
     "sequelize": "3.24.0",
     "sinon": "1.17.5"
   }

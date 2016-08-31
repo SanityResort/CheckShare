@@ -9,7 +9,10 @@ var config = require('nodejs-config')(
     );
 
 module.exports = {
-  main: config.get('main'),
+  api: config.get('api'),
   db: config.get('db'),
+  mail: config.get('mail'),
+  mailContent: config.get('mailContent'),
+  main: config.get('main'),
   session: config.get('session')
 }
