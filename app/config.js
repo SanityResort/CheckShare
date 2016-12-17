@@ -11,7 +11,7 @@ var config = require('nodejs-config')(
 module.exports = {
   api: config.get('api'),
   db: config.get('db'),
-  mail: config.get('mail'),
+  mail: config.get('mailConfig'),
   mailContent: config.get('mailContent'),
   main: config.get('main'),
   session: config.get('session')

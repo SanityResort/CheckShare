@@ -1,0 +1,7 @@
+{
+  "from": "noreply@checkshare.herokuapp.com",
+  "sendGrid": {
+    "password": "mfmfnblx3502",
+    "user": "app55902671@heroku.com"
+  }
+}

@@ -1,7 +1,9 @@
 'use strict';
 
-var   config = require('./config.js').db,
-      Sequelize = require('sequelize');
+var config = require('./config.js').db,
+    Sequelize = require('sequelize'),
+    STATE_CREATED = "CREATED",
+    STATE_ACTIVE = "ACTIVE";
 
 var sequelize = new Sequelize(config.dbname, config.username, config.password, {
   dialect: config.dialect,
@@ -15,9 +17,18 @@ var sequelize = new Sequelize(config.dbname, config.username, config.password, {
 });
 
 var User = sequelize.define('user', {
+    state: {type: Sequelize.ENUM(STATE_CREATED, STATE_ACTIVE), allowNull: false, defaultValue: STATE_CREATED},
+    email: {type: Sequelize.STRING, allowNull: false, unique: true },
     username: {type: Sequelize.STRING, allowNull: false, unique: true },
     password: {type: Sequelize.STRING, allowNull: false},
     id: {type: Sequelize.UUID, allowNull: false, uniqe: true, defaultValue: Sequelize.UUIDV4, primaryKey: true}
+}, {
+    indexes: [
+        {
+            unique: false,
+            fields: ['state']
+        }
+    ]
 });
 
 sequelize.sync()
